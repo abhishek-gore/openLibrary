@@ -1,28 +1,197 @@
-.spacer {
-  flex: 1 1 auto;
+// Toolbar Styling
+.app-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
 }
 
+.toolbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.brand-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.brand-name {
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
+
+// Navigation Links
+.nav-links {
+    display: flex;
+    gap: 0.5rem;
+
+    button {
+        color: rgba(255, 255, 255, 0.9);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1.25rem;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        &.active-link {
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        mat-icon {
+            font-size: 20px;
+            width: 20px;
+            height: 20px;
+        }
+
+        span {
+            @media (max-width: 600px) {
+                display: none;
+            }
+        }
+    }
+}
+
+// Content Area
 .content {
-  padding: 2rem;
-  min-height: calc(100vh - 64px - 60px); // viewport height - toolbar - footer
+    min-height: calc(100vh - 64px - 120px);
+    background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+    padding: 0;
 }
 
+// Footer Styling
 .footer {
-  background-color: #f5f5f5;
-  padding: 1rem;
-  text-align: center;
-  color: #666;
-  font-size: 0.875rem;
-  border-top: 1px solid #e0e0e0;
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    color: white;
+    padding: 2rem 1rem;
+    margin-top: auto;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
-mat-toolbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
-mat-toolbar button {
-  margin-left: 0.5rem;
+.footer-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.footer-icon {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+
+    a {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: white;
+        text-decoration: none;
+        opacity: 0.8;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+
+        &:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+            color: #667eea;
+        }
+
+        mat-icon {
+            font-size: 18px;
+            width: 18px;
+            height: 18px;
+        }
+    }
+}
+
+// Animations
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+// Responsive
+@media (max-width: 600px) {
+    .app-toolbar {
+        ::ng-deep .mat-toolbar-row {
+            padding: 0;
+        }
+    }
+
+    .toolbar-content {
+        padding: 0 0.5rem;
+    }
+
+    .brand {
+        font-size: 1.2rem;
+    }
+
+    .nav-links {
+        gap: 0.25rem;
+
+        button {
+            padding: 0.5rem 0.75rem;
+        }
+    }
 }
