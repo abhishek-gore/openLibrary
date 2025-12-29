@@ -8,6 +8,7 @@ export interface Book {
     edition_count?: number;
     publisher?: string[];
     language?: string[];
+    coverUrl?: string;
 }
 
 export interface BookSearchResponse {
@@ -21,4 +22,10 @@ export interface BookSearchParams {
     query: string;
     page?: number;
     limit?: number;
+}
+
+export interface BookshelfState {
+    books: Book[];
+    loading: boolean;
+    error: string | null;
 }

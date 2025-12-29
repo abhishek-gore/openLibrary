@@ -18,8 +18,8 @@ export const routes: Routes = [
             },
             {
                 path: 'shelf',  
-                loadChildren: () => 
-                    import('./features/shelf/shelf.module').then(m => m.ShelfModule),
+                loadComponent: () => 
+                    import('./features/shelf/shelf.component').then(m => m.ShelfComponent),
             },
             {
                 path: 'profile',
