@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { BookSearchResponse } from "../book.model";
+import { Book, BookSearchResponse } from "../book.model";
+import { map } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -13,5 +14,11 @@ export class BookService {
 
     getBooks(query: string) {
         return this.http.get<BookSearchResponse>(this.url + query);
+    }
+
+    getBookDetails(bookId: string) {
+        return this.http.get<BookSearchResponse>(this.url + bookId).pipe(
+            map((response) => response.docs[0])
+        );
     }
 }
