@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+// Include the common styles for Angular Material
+@include mat.core();
+
+// Define your application's theme
+
+
+
+// Include theme styles for core and each component used in your app
+// @include mat.all-component-themes($theme);
+
+// Add this to your global styles.scss
+.success-snackbar {
+  background-color: #4caf50;
+  color: white;
+  .mat-simple-snackbar-action {
+    color: white;
+  }
+}

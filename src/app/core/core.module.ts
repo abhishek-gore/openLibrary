@@ -6,4 +6,3 @@ import { Layout } from './layout/layout';
   imports: [SharedModule, Layout],
 })
 export class CoreModule {}
-  
