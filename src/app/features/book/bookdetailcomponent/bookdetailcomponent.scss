@@ -1,0 +1,172 @@
+.book-details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.loading-spinner,
+.error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.error-message {
+  color: #d32f2f;
+  text-align: center;
+}
+
+.book-card {
+  padding: 2rem;
+}
+
+.book-header {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.book-cover {
+  width: 300px;
+  height: 450px;
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.book-info {
+  flex: 1;
+  min-width: 300px;
+
+  h1 {
+    margin: 0 0 1rem;
+    color: #333;
+  }
+}
+
+.authors {
+  margin: 1.5rem 0;
+
+  h3 {
+    margin: 0 0 0.5rem;
+    color: #555;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: 0.5rem 0;
+
+      a {
+        color: #1976d2;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.publish-date {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #666;
+  margin: 1rem 0;
+
+  mat-icon {
+    font-size: 1.2rem;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+}
+
+.description {
+  margin: 2rem 0;
+
+  h3 {
+    margin: 0 0 1rem;
+    color: #333;
+  }
+
+  p {
+    line-height: 1.6;
+    color: #444;
+  }
+}
+
+.subjects {
+  margin: 2rem 0;
+
+  h3 {
+    margin: 0 0 1rem;
+    color: #333;
+  }
+
+  .subject-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .subject-tag {
+    background: #f0f0f0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    color: #555;
+  }
+}
+
+.add-to-shelf {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .book-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .book-cover {
+    width: 200px;
+    height: 300px;
+  }
+}
+.mat-mdc-raised-button {
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+.mat-mdc-raised-button.mat-primary {
+  background: linear-gradient(135deg, #5b6cff, #7c4dff);
+  color: #ffffff;
+}
+
+.mat-mdc-raised-button.mat-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(91, 108, 255, 0.35);
+}
+
+.mat-mdc-raised-button.mat-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(91, 108, 255, 0.25);
+}
+

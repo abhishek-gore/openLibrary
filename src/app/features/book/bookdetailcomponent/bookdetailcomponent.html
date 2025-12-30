@@ -1,1 +1,72 @@
-<p>bookdetailcomponent works!</p>
+<div class="book-details-container">
+ @if (error) {
+
+    <div class="error-message">
+      <mat-icon color="warn">error_outline</mat-icon>
+      <p>{{ error }}</p>
+
+      <button
+        color="primary"
+        routerLink="/"
+      >
+        Back to Search
+      </button>
+    </div>
+
+  } @else if (book$ | async; as book) {
+
+    <mat-card class="book-card">
+
+      <div class="book-header">
+
+        <img
+          class="book-cover"
+          [src]="getCoverUrl()"
+          [alt]="book?.title || 'Book cover'"
+          (error)="handleImageError($event)"
+        />
+
+        <div class="book-info">
+          <h1 class="book-title">{{ book?.title }}</h1>
+
+          @if (book?.author_name?.length; as count ) {
+            <section class="authors">
+              @if(count >1){
+                <h3>Authors</h3>
+              }
+              @else{
+                <h3>Author</h3>
+              }
+              <ul>
+                @for (author of book.author_name; track author) {
+                  <li>{{ author }}</li>
+                }
+              </ul>
+            </section>
+          }
+
+          @if (book?.first_publish_year) {
+            <div class="publish-date">
+              <span>
+                First published: {{ book?.first_publish_year }}
+              </span>
+            </div>
+          }
+
+          <button
+            mat-raised-button
+            color="primary"
+            class="add-to-shelf"
+            (click)="addToShelf(book)"
+          >
+            Add to Shelf
+          </button>
+        </div>
+
+      </div>
+
+    </mat-card>
+
+  }
+
+</div>

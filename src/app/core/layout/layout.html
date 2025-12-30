@@ -1,17 +1,39 @@
-<mat-toolbar color="primary">
-    <span>OpenLibrary Explorer</span>
-    <span class="spacer"></span>
-  
-    <button mat-button routerLink="/">Home</button>
-    <button mat-button routerLink="/shelf">Shelf</button>
-    <button mat-button routerLink="/profile">Profile</button>
-  </mat-toolbar>
-  
-  <main class="content">
-    <router-outlet></router-outlet>
-  </main>
-  
-  <footer class="footer">
-    © 2025 OpenLibrary Explorer
-  </footer>
-  
+<mat-toolbar color="primary" class="app-toolbar">
+  <div class="toolbar-content">
+    <div class="brand">
+      <span class="brand-name">OpenLibrary Explorer</span>
+    </div>
+
+    <nav class="nav-links">
+      <button mat-button routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+        <span>Home</span>
+      </button>
+      <button mat-button routerLink="/shelf" routerLinkActive="active-link">
+        <span>My Shelf</span>
+      </button>
+      <button mat-button routerLink="/profile" routerLinkActive="active-link">
+        <span>Profile</span>
+      </button>
+    </nav>
+  </div>
+</mat-toolbar>
+
+<main class="content">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <span>© 2025 OpenLibrary Explorer</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://openlibrary.org" target="_blank" rel="noopener">
+        <span>Open Library</span>
+      </a>
+      <a href="https://github.com" target="_blank" rel="noopener">
+        <span>GitHub</span>
+      </a>
+    </div>
+  </div>
+</footer>

@@ -1,1 +1,52 @@
-<p>home works!</p>
+<div class="search-container">
+  <div class="hero-section">
+    <h1 class="hero-title">
+      <span class="gradient-text">Discover</span> Your Next Great Read
+    </h1>
+    <p class="hero-subtitle">Search millions of books from the Open Library</p>
+  </div>
+
+  <mat-form-field class="search-input">
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      placeholder="Search books..."
+      [formControl]="searchControl"
+    />
+  </mat-form-field>
+  <div *ngIf="isLoading" class="loading-state">
+    <div class="spinner-container">
+      <mat-spinner diameter="48"></mat-spinner>
+      <p>Searching for books...</p>
+    </div>
+  </div>
+  
+  <div *ngIf="!isLoading">
+    <div *ngIf="books$ | async as books">
+    <p *ngIf="books.length === 0" class="empty-state">
+      No books found
+    </p>
+
+    <div *ngIf="books.length > 0" class="books-grid">
+      <mat-card
+        class="book-card"
+        *ngFor="let book of books"
+        (click)="viewBookDetails(book)"
+        tabindex="0"
+        (keydown.enter)="viewBookDetails(book)"
+      >
+        <img
+          mat-card-image
+          class="book-cover"
+          [src]="getCoverUrl(book)"
+          alt="Book cover"
+        />
+
+        <mat-card-content>
+          <h3 class="book-title">{{ book.title }}</h3>
+          <p class="book-author">{{ book.author_name }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+</div>  </div>
+</div>
