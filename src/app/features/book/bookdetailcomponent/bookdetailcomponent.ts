@@ -48,7 +48,6 @@ export class Bookdetailcomponent {
 
       return this.bookService.getBookDetails(id).pipe(
         tap(book => {
-          console.log(book);
           this.coverId = book.cover_i?.toString() ?? null;
         }),
         catchError(() => {

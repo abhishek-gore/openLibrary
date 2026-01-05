@@ -1,1 +1,46 @@
-<p>auth works!</p>
+<div class="auth-container">
+  <h1>Login</h1>
+  
+  <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="auth-form">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input 
+        id="email" 
+        type="email" 
+        formControlName="email" 
+        placeholder="Enter your email"
+        [class.error]="email?.invalid && email?.touched"
+      />
+      <div *ngIf="email?.touched && email?.invalid" class="error-messages">
+        <small *ngIf="email?.errors?.['required']">Email is required</small>
+        <small *ngIf="email?.errors?.['email']">Please enter a valid email</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input 
+        id="password" 
+        type="password" 
+        formControlName="password" 
+        placeholder="Enter your password"
+        [class.error]="password?.invalid && password?.touched"
+      />
+      <div *ngIf="password?.touched && password?.invalid" class="error-messages">
+        <small *ngIf="password?.errors?.['required']">Password is required</small>
+        <small *ngIf="password?.errors?.['weakPassword']">
+          Password must be at least 8 characters long, include a number, uppercase and lowercase letters
+        </small>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="authForm.invalid">
+      Sign In
+    </button>
+
+    <div class="form-footer">
+      <p>Don't have an account? <a href="#">Sign up</a></p>
+      <a href="#" class="forgot-password">Forgot password?</a>
+    </div>
+  </form>
+</div>

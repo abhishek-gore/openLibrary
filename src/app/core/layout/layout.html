@@ -9,10 +9,13 @@
         <span>Home</span>
       </button>
       <button mat-button routerLink="/shelf" routerLinkActive="active-link">
-        <span>My Shelf</span>
+        <span>{{userName}}'s Shelf</span>
       </button>
       <button mat-button routerLink="/profile" routerLinkActive="active-link">
         <span>Profile</span>
+      </button>
+      <button mat-button (click)="logout()" routerLinkActive="active-link">
+        <span>Logout</span>
       </button>
     </nav>
   </div>
@@ -31,7 +34,7 @@
       <a href="https://openlibrary.org" target="_blank" rel="noopener">
         <span>Open Library</span>
       </a>
-      <a href="https://github.com" target="_blank" rel="noopener">
+      <a href="https://github.com/abhishek-gore/openLibrary" target="_blank" rel="noopener">
         <span>GitHub</span>
       </a>
     </div>
