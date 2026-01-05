@@ -17,7 +17,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     TruncatePipe
   ],
   imports: [
-    FormsModule,
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
