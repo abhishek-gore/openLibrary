@@ -9,6 +9,7 @@ export interface Book {
     publisher?: string[];
     language?: string[];
     coverUrl?: string;
+    ebook_access?: boolean;
 }
 
 export interface BookSearchResponse {

@@ -1,1 +1,42 @@
-<p>analytics works!</p>
+<div class="analytics-dashboard">
+  <h2>Reading Statistics</h2>
+  
+  <div class="stats-grid">
+    <mat-card class="stat-card">
+      <h3>Total Books</h3>
+      <p class="stat-number">{{ analytics().totalBooks || 0 }}</p>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <h3>E-book Access</h3>
+      <p class="stat-number">
+        {{ analytics().ebookAccess.hasAccess || 0 }} / 
+        {{ analytics().totalBooks || 0 }}
+      </p>
+    </mat-card>
+  </div>
+
+  <div class="charts-container">
+    <mat-card class="chart-card">
+      <h3>Books by Decade</h3>
+      <div class="chart-wrapper">
+        <canvas baseChart
+          [data]="barChartData()"
+          [options]="barChartOptions"
+          [type]="barChartType">
+        </canvas>
+      </div>
+    </mat-card>
+
+    <mat-card class="chart-card">
+      <h3>E-book Access</h3>
+      <div class="chart-wrapper">
+        <canvas baseChart
+          [data]="pieChartData()"
+          [options]="pieChartOptions"     
+          [type]="pieChartType">
+        </canvas>
+      </div>
+    </mat-card>
+  </div>
+</div>
