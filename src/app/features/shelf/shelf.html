@@ -1,31 +1,44 @@
 <div class="shelf-container">
-  <div *ngIf="loading$ | async; else bookList" class="loading-container">
+  <div *ngIf="(loading$ | async) && !(books$ | async)?.length" class="loading-container">
     <div class="spinner"></div>
-    <p>Loading your bookshelf...</p>
+    <p>Loading your Bookshelf...</p>
   </div>
 
-  <ng-template #bookList>
+    <ng-container *ngIf="!(loading$ | async) || (books$ | async)?.length">
+
     <div class="shelf-header">
       <h1>My Bookshelf</h1>
-      <p class="book-count" *ngIf="(books$ | async) as books">
+      <p class="book-count" *ngIf="books$ | async as books">
         {{ books.length }} {{ books.length === 1 ? 'Book' : 'Books' }} in Collection
       </p>
     </div>
-    
+
     <div class="books-grid" *ngIf="(books$ | async) as books; else emptyShelf">
       <div *ngFor="let book of books" class="book-card">
         <div class="book-cover">
-          <img [src]="book.coverUrl" [alt]="book.title">
-          <div class="book-actions">
-            <button class="remove-btn" (click)="removeBook(book.key)" title="Remove from shelf">
-              <i class="fas fa-times"></i>
-            </button>
+          <div class="image-container" [class.loaded]="isImageLoaded(book.key)">
+            <img
+              [src]="book.coverUrl"
+              [alt]="book.title"
+              (load)="onImageLoad(book.key)"
+              (error)="onImageError(book.key)"
+              [style.opacity]="isImageLoaded(book.key) ? 1 : 0"
+              [style.transition]="'opacity 0.3s ease-in-out'"
+            />
+            <div *ngIf="!isImageLoaded(book.key)" class="image-placeholder">
+              <div class="spinner small"></div>
+            </div>
+            </div>
+            <div class="book-actions">
+              <button class="remove-btn" (click)="removeBook(book.key)" title="Remove from shelf">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
           </div>
-        </div>
         <div class="book-info">
-          <h3 class="book-title" [title]="book.title">{{ book.title | truncate:30 }}</h3>
+          <h3 class="book-title" [title]="book.title">{{ book.title | truncate : 30 }}</h3>
           <p class="book-author" *ngIf="book.author_name" [title]="book.author_name.join(', ')">
-            {{ book.author_name.join(', ') | truncate:25 }}
+            {{ book.author_name.join(', ') | truncate : 25 }}
           </p>
           <p class="book-year" *ngIf="book.first_publish_year">
             {{ book.first_publish_year }}
@@ -41,5 +54,5 @@
         <p>Start by adding some books to your collection</p>
       </div>
     </ng-template>
-  </ng-template>
+    </ng-container>
 </div>

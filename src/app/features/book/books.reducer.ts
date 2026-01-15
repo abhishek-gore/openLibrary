@@ -8,23 +8,25 @@ export interface state {
     error: string | null;
 }
 
-const intialState: state = {
+const initialState: state = {
     books: [],
     loading: false,
     error: null
 }
 
 export const bookshelfReducer = createReducer(
-    intialState, on(BookshelfActions.loadBooks, (state) => ({
+    initialState, on(BookshelfActions.loadBooks, (state) => ({
         ...state,
-        loading: true, 
+        loading: true,
+        isLoading: false,
         error: null
     })),
 
     on(BookshelfActions.loadBooksSuccess, (state, {books}) => ({
         ...state, 
         books,
-        loading: false
+        loading: false,
+        isLoading: false
     })),
 
     on(BookshelfActions.addBook, (state, {book}) => {

@@ -8,12 +8,18 @@ import { map } from "rxjs";
 })
 export class BookService {
 
-    private readonly url = 'https://openlibrary.org/search.json?q=';
+    private readonly url = 'https://openlibrary.org/search.json';
 
     constructor(private http: HttpClient) { }
 
-    getBooks(query: string) {
-        return this.http.get<BookSearchResponse>(this.url + query);
+    getBooks(query: string, page: number = 1, limit: number = 5) {
+        return this.http.get<BookSearchResponse>(this.url, {
+            params: {
+                q: query,
+                page: page,
+                limit: limit
+            }
+        });
     }
 
     getBookDetails(bookId: string) {
